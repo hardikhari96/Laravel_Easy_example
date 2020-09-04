@@ -101,6 +101,9 @@ Route::get('/denimdemo',function(){
 Route::post('/methods/post','Methods@postcontroller');
 Route::post('/methods/postview','Methods@postview');
 
+/* insert in test table using model *********/
+Route::post('/methods/insertdata','Methods@sentdataindb');
+
 
 
 

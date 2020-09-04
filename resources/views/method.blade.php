@@ -52,7 +52,11 @@
                       <input type="hidden" name="name" value="hari">
                       <input type="submit" value="view post method">
                   </form>
-                    
+                    <form class="form" action="<?php echo URL::to('/'); ?>/methods/insertdata/" method="post">
+                    {{ csrf_field() }}
+                      <input type="hidden" name="name" value="hari">
+                      <input type="submit" value="sent data in table database">
+                  </form>
                 </div>
             </div>
         </div>

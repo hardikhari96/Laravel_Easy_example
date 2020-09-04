@@ -43,7 +43,8 @@ Artisan::command('math', function () {
         $this->comment('Total '.$method.' '.$a.$symbol.$b.' = '.$x);
     }
     else{
-    	$this->comment('Bye');
+    	$password = $this->secret('What is the password?');
+    	$this->comment('Bye ;) '.$password);
     }
 })->describe(': Math Common');
 
@@ -51,4 +52,6 @@ Artisan::command('build {project}', function ($project) {
 
     $this->info("Building {$project}!");
 })->describe(': Build the project');
+
+
 

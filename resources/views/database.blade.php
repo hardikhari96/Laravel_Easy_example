@@ -19,8 +19,9 @@
       
             <div class="content">
                 <div class="title m-b-md ">
-                   <a href="<?php echo URL::to('/'); ?>"> Database</a>
+                   <a href="<?php echo URL::to('/'); ?>"> Manage Database</a>
                 </div>
+
                 <div class="links">
                     <a href="<?php echo URL::to('/'); ?>/database/select">Select</a>
 
