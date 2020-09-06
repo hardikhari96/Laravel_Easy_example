@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\test;
+
 class Users extends Controller
 {
     function test(){
@@ -48,20 +49,32 @@ class Users extends Controller
 
     function update(){
 
-        $id =  array('name'=>Input::get('id'));
-        $id =  array('name'=>Input::get('id'));
+        $id     = Input::get('id');
+        $name   =  Input::get('name');
+ 
+        $test = test::find($id);
 
-        $action = DB::table('tests')->where('name')->delete($id);
-        
-        if($action){
-            return array('status'=>$action,'data'=>$id,'message'=>'data Deleted');
+        $test->name = $name;
+        $msg = $test->save();
+
+       
+      if($msg){
+            return array('status'=> $msg,'data'=> $test,'message'=>'data Updated');
         }else{
-            return array('status'=>$action);
+            return array('status'=> $msg);
         }
         
     }
+    function single(){
+
+
+        $id     = Input::get('id');
+        $test = test::find($id);
+        $test->get();
+
+        return $test;
+    }
     function directory(){
- 
     	return view('welcome');
     }
 }

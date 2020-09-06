@@ -29,14 +29,25 @@ class Methods extends Controller
       $name = $request->input('name');
         
 
-        return array('single'=>$name,'all'=>$all);
+        return array('single'=>$name);
 
     }
      public function sentdataindb(Request $request)
     {
-         $test = new test;
+        $test = new test;
         $test->name = $request->input('name');
 
         return array('success'=> $test->save());
+    }
+
+     public function featchall()
+    {
+       // $test = new test;
+       // $test->where('id', 11);
+       // $test->orderBy('name', 'desc');
+        
+       // return $test->all();
+
+      return test::where('id', 12)->get();
     }
 }

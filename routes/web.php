@@ -48,12 +48,6 @@ Route::get('/script', function () {
 
 
 
-
-
-
-
-
-
 /*** hari Page **/
 
 Route::get('/hari', function () {
@@ -73,57 +67,74 @@ Route::get('/dir','users\Users@directory');
 
 /*** Database Page **/
 
-Route::get('/database',function(){
-	return view('database');
+
+Route::group(['prefix'=>'database'],function () {
+        
+          Route::get('/',function(){
+            return view('database');
+          });
+
+          Route::get('/select','users\Users@database');
+
+          Route::get('/insert','users\Users@insert');
+
+          Route::get('/delete','users\Users@delete');
+          
+           Route::get('/update','users\Users@update');
+
+          Route::get('/ssingle','users\Users@single');
 });
 
-Route::get('/database/select','users\Users@database');
 
-Route::get('/database/insert','users\Users@insert');
-
-Route::get('/database/delete','users\Users@delete');
 
 /*** methods Page **/
 
-Route::get('/methods',function(){
-	return view('method');
+Route::group(['prefix'=>'methods'],function () {
+
+      Route::get('/',function(){
+        return view('method');
+      });
+
+
+      Route::get('/getplain/{name}','Methods@getinline');
+      Route::get('/get/',function(){
+        return "Nothing Here";
+      });
+      Route::get('/get/value','Methods@getquestion');
+      Route::get('/denimdemo',function(){
+        return view('demoframe');
+      });
+      Route::post('/post','Methods@postcontroller');
+      Route::post('/postview','Methods@postview');
+
+      /* insert in test table using model *********/
+      Route::post('/insertdata','Methods@sentdataindb');
+      Route::get('/get/fetchall','Methods@featchall');
+
+
 });
-
-
-Route::get('/methods/getplain/{name}','Methods@getinline');
-Route::get('/methods/get/',function(){
-	return "Nothing Here";
-});
-Route::get('/methods/get/value','Methods@getquestion');
-Route::get('/denimdemo',function(){
-	return view('demoframe');
-});
-Route::post('/methods/post','Methods@postcontroller');
-Route::post('/methods/postview','Methods@postview');
-
-/* insert in test table using model *********/
-Route::post('/methods/insertdata','Methods@sentdataindb');
-
-
-
 
 
 /* test *********/
 
-// Authentication routes...
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::get('auth/login',function(){
-	return view('auth/login');
+
+Route::group(['prefix'=>'auth'],function () {
+
+
+      // Authentication routes...
+      Route::get('/login', 'Auth\AuthController@getLogin');
+      Route::get('/login',function(){
+        return view('auth/login');
+      });
+
+      Route::post('/login', 'Auth\AuthController@postLogin');
+      Route::get('/logout', 'Auth\AuthController@getLogout');
+
+      // Registration routes...
+      Route::get('/register', 'Auth\AuthController@getRegister');
+      Route::post('/register', 'Auth\AuthController@postRegister');
+
 });
-
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
-
-// Registration routes...
-Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
-
-
 
 
 

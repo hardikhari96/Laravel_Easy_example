@@ -28,9 +28,12 @@
                     <a href="<?php echo URL::to('/'); ?>/database/insert?name=keyonedata"> Insert using get</a>
 
 
-                    <a href="<?php echo URL::to('/'); ?>/methods/get/value?key1=keyonedata&key2=keytwodata"> Update</a>
+                    <a href="<?php echo URL::to('/'); ?>/database/update?id=11&name=hari"> Update</a>
                   
                     <a href="<?php echo URL::to('/'); ?>/database/delete?id=10"> Delete</a>
+
+                    <a href="<?php echo URL::to('/'); ?>/database/ssingle?id=11"> Select Single</a>
+                    
                     
                 </div>
             </div>

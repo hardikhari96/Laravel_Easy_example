@@ -40,7 +40,7 @@
                 </div>
                 <div class="links">
                     <a href="<?php echo URL::to('/'); ?>/methods/getplain/yourdataishere">Get Plane link method</a>
-
+                    <a href="<?php echo URL::to('/'); ?>/methods/get/fetchall">Fetch Data All Using Model</a>
                     <a href="<?php echo URL::to('/'); ?>/methods/get/value?key1=keyonedata&key2=keytwodata"> Question Get Method</a>
                   <form class="form" action="<?php echo URL::to('/'); ?>/methods/post/" method="post">
                     {{ csrf_field() }}
